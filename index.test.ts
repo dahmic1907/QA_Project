@@ -8,12 +8,10 @@ require('chromedriver');
 
 
 const rootURL = 'http://automationpractice.com/index.php';
-const d = new Builder().forBrowser('chrome').build();
+let driver = new Builder().forBrowser('chrome').build();
 //const waitUntilTime = 20000;
-let driver;
-
   it('waits for the driver to start', () => {
-    return d.then(_d => {
+    return driver.then((_d: any) => {
       driver = _d
     })
   })
@@ -28,7 +26,7 @@ let driver;
        driver.findElement(By.className('icon-home')).click();
     });*/
     it('User searches for a blouse', async  () =>{
-      await driver.sleep(500);
+      await driver.sleep(5000);
       let searchBox = await driver.findElement(By.name('search_query'));
       let searchButton = await driver.findElement(By.name('submit_search'));
       await searchBox.sendKeys('Blouse');
@@ -82,7 +80,7 @@ let driver;
       let FacebookBtn = await driver.findElement(By.className('facebook'));
       await FacebookBtn.click();
       const windows = await driver.getAllWindowHandles();
-      windows.forEach(async handle => {
+      windows.forEach(async (handle: any) => {
         if (handle !== originalWindow) {
           await driver.switchTo().window(handle);
         }
@@ -101,7 +99,7 @@ let driver;
       let TwitterBtn = await driver.findElement(By.className('twitter'));
       await TwitterBtn.click();
       const windows = await driver.getAllWindowHandles();
-      windows.forEach(async handle => {
+      windows.forEach(async (handle: any) => {
         if (handle !== originalWindow) {
           await driver.switchTo().window(handle);
         }
@@ -120,7 +118,7 @@ let driver;
       let youtubeBtn = await driver.findElement(By.className('youtube'));
       await youtubeBtn.click();
       const windows = await driver.getAllWindowHandles();
-      windows.forEach(async handle => {
+      windows.forEach(async (handle: any) => {
         if (handle !== originalWindow) {
           await driver.switchTo().window(handle);
         }
