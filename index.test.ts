@@ -18,6 +18,7 @@ let driver = new Builder().forBrowser('chrome').build();
      driver.manage().window().maximize();
      driver.get(rootURL);
   })
+  
   describe('Tests - home page', () => {
     it('Check that cart is empty when new user launches the app', async () =>{
       await driver.sleep(1000);
@@ -87,7 +88,7 @@ let driver = new Builder().forBrowser('chrome').build();
     it('Check Newsletter option', async  () =>{
       await driver.sleep(500);
       await driver.findElement(By.className('icon-home')).click();
-      await driver.findElement(By.id('newsletter-input')).sendKeys('dzeny.ahmic@hotmail.aaa',  Key.ENTER);
+      await driver.findElement(By.id('newsletter-input')).sendKeys('dzeny.ahmic@hotmail.cc',  Key.ENTER);
       var result = await driver.findElement(By.className('alert alert-success')).getText();
       expect(result).toEqual('Newsletter : You have successfully subscribed to this newsletter.');
       await driver.sleep(1000);
@@ -156,7 +157,7 @@ describe('Tests- Authentication page', () => {
   it('Check sign up and sign out option', async  () =>{
     await driver.sleep(500);
     await driver.findElement(By.className('login')).click();
-    await driver.findElement(By.id('email_create')).sendKeys('dahmic@hotmail.cii');
+    await driver.findElement(By.id('email_create')).sendKeys('dahmic@hotmail.cnn');
     await driver.findElement(By.id('SubmitCreate')).click();
     await driver.sleep(5000);
     await driver.findElement(By.id('customer_firstname')).sendKeys('Dzeneta');
@@ -189,11 +190,16 @@ describe('Tests- Authentication page', () => {
     await driver.sleep(500);
     var link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[6]/ul/li[3]/a'));
     link.click();
-    await driver.sleep(5000);
-    link = await driver.findElement(By.className('button ajax_add_to_cart_button btn btn-default'));
+    await driver.sleep(500);
+    
+    var product = await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div[2]/ul/li/div/div[2]/h5/a'));
+    product.click();
+    await driver.sleep(500);
+    var link = await driver.findElement(By.id('add_to_cart'));
     link.click();
     await driver.sleep(500);
-    await driver.findElement(By.className('cross')).click();
+    link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/a'));
+    link.click();
     await driver.sleep(5000);
     await driver.findElement(By.className('icon-trash')).click();
     await driver.sleep(5000);
