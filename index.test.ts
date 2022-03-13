@@ -21,7 +21,7 @@ describe('Smoke tests for Demo Application',() =>{
      driver.get(rootURL);
   })
   
-  describe('Tests - home page', () => {
+  /*describe('Tests - home page', () => {
     it('Check that cart is empty when new user launches the app', async () =>{
       await driver.sleep(1000);
       let text = await driver.findElement(By.className('ajax_cart_no_product')).getText();
@@ -90,7 +90,7 @@ describe('Smoke tests for Demo Application',() =>{
     it('Check Newsletter option', async  () =>{
       await driver.sleep(500);
       await driver.findElement(By.className('icon-home')).click();
-      await driver.findElement(By.id('newsletter-input')).sendKeys('dzeny.ahmic@hotmail.cc',  Key.ENTER);
+      await driver.findElement(By.id('newsletter-input')).sendKeys('dzeny.ahmic@hotmail.xxx',  Key.ENTER);
       var result = await driver.findElement(By.className('alert alert-success')).getText();
       expect(result).toEqual('Newsletter : You have successfully subscribed to this newsletter.');
       await driver.sleep(1000);
@@ -151,67 +151,109 @@ describe('Smoke tests for Demo Application',() =>{
       await driver.close();
       await driver.switchTo().window(originalWindow);
     });
-
-});
+  });*/
  
-describe('Tests- Authentication page', () => {
-  
-  it('Check sign up and sign out option', async  () =>{
-    await driver.sleep(500);
-    await driver.findElement(By.className('login')).click();
-    await driver.findElement(By.id('email_create')).sendKeys('dahmic@hotmail.cnn');
-    await driver.findElement(By.id('SubmitCreate')).click();
-    await driver.sleep(5000);
-    await driver.findElement(By.id('customer_firstname')).sendKeys('Dzeneta');
-    await driver.findElement(By.id('customer_lastname')).sendKeys('Ahmic');
-    await driver.findElement(By.id('passwd')).sendKeys('12345');
-    await driver.findElement(By.id('address1')).sendKeys('Ive Andrica bb');
-    await driver.findElement(By.id('city')).sendKeys('Miami');
-    await driver.findElement(By.id('id_state')).sendKeys('Ive Andrica bb');
-    await driver.findElement(By.id('postcode')).sendKeys('00000');
-    await driver.findElement(By.id('phone_mobile')).sendKeys('123 123 123');
-    await driver.findElement(By.id('submitAccount')).click();
-    await driver.sleep(500);
-    let placeholder  = await driver.findElement(By.className('navigation_page')).getText();
-    expect(placeholder).toEqual("My account");
-    let logOutBtn = await driver.findElement(By.className('logout'));
-    let accountBtn = await driver.findElement(By.className('account')).isEnabled;
-    expect(accountBtn).toBeTruthy();
-    logOutBtn.click(); 
-    await driver.sleep(100);
-    placeholder  = await driver.findElement(By.className('navigation_page')).getText();
-    expect(placeholder).toEqual("Authentication");
-  })
+//  describe('Tests- Authentication page', () => {
+    /*
+    it('Check sign up and sign out option', async  () =>{
+      await driver.sleep(500);
+      await driver.findElement(By.className('login')).click();
+      await driver.findElement(By.id('email_create')).sendKeys('dahmic@hotmail.xxx');
+      await driver.findElement(By.id('SubmitCreate')).click();
+      await driver.sleep(5000);
+      await driver.findElement(By.id('customer_firstname')).sendKeys('Dzeneta');
+      await driver.findElement(By.id('customer_lastname')).sendKeys('Ahmic');
+      await driver.findElement(By.id('passwd')).sendKeys('12345');
+      await driver.findElement(By.id('address1')).sendKeys('Ive Andrica bb');
+      await driver.findElement(By.id('city')).sendKeys('Miami');
+      await driver.findElement(By.id('id_state')).sendKeys('Ive Andrica bb');
+      await driver.findElement(By.id('postcode')).sendKeys('00000');
+      await driver.findElement(By.id('phone_mobile')).sendKeys('123 123 123');
+      await driver.findElement(By.id('submitAccount')).click();
+      await driver.sleep(500);
+      let placeholder  = await driver.findElement(By.className('navigation_page')).getText();
+      expect(placeholder).toEqual("My account");
+      let logOutBtn = await driver.findElement(By.className('logout'));
+      let accountBtn = await driver.findElement(By.className('account')).isEnabled;
+      expect(accountBtn).toBeTruthy();
+      logOutBtn.click(); 
+      await driver.sleep(100);
+      placeholder  = await driver.findElement(By.className('navigation_page')).getText();
+      expect(placeholder).toEqual("Authentication");
+    })
 
-  it('Check sign in and add to cart options for registered user', async  () =>{
-    await driver.sleep(1000);
-    await driver.findElement(By.className('login')).click();
-    await driver.findElement(By.id('email')).sendKeys('dzeny.ahmic@gmail.com');
-    await driver.findElement(By.id('passwd')).sendKeys('12345');
-    await driver.findElement(By.id('SubmitLogin')).click();
-    await driver.sleep(500);
-    var link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[6]/ul/li[3]/a'));
-    link.click();
-    await driver.sleep(500);
-    
-    var product = await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div[2]/ul/li/div/div[2]/h5/a'));
-    product.click();
-    await driver.sleep(500);
-    var link = await driver.findElement(By.id('add_to_cart'));
-    link.click();
-    await driver.sleep(500);
-    link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/a'));
-    link.click();
-    await driver.sleep(5000);
-    await driver.findElement(By.className('icon-trash')).click();
-    await driver.sleep(5000);
-    var result = await driver.findElement(By.className('alert alert-warning')).getText();
-    await driver.sleep(500);
-    expect(result).toEqual("Your shopping cart is empty.");
-    await driver.findElement(By.className('logout')).click();
-  })
-});
-afterAll(() => {
-  driver.quit();
-});
+    it('Check sign in and add to cart options for registered user', async  () =>{
+      await driver.sleep(1000);
+      await driver.findElement(By.className('login')).click();
+      await driver.findElement(By.id('email')).sendKeys('dzeny.ahmic@gmail.com');
+      await driver.findElement(By.id('passwd')).sendKeys('12345');
+      await driver.findElement(By.id('SubmitLogin')).click();
+      await driver.sleep(500);
+      var link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[6]/ul/li[3]/a'));
+      link.click();
+      await driver.sleep(500);
+      var product = await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div[2]/ul/li/div/div[2]/h5/a'));
+      product.click();
+      await driver.sleep(500);
+      var link = await driver.findElement(By.id('add_to_cart'));
+      link.click();
+      await driver.sleep(500);
+      link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/a'));
+      link.click();
+      await driver.sleep(5000);
+      await driver.findElement(By.className('icon-trash')).click();
+      await driver.sleep(5000);
+      var result = await driver.findElement(By.className('alert alert-warning')).getText();
+      await driver.sleep(500);
+      expect(result).toEqual("Your shopping cart is empty.");
+      await driver.findElement(By.className('logout')).click();
+    })
+  });*/
+
+  describe('Tests- Ordering products', () => {
+    it('Logged user is able to make successful order of items', async  () =>{
+      await driver.sleep(1000);
+      await driver.findElement(By.className('login')).click();
+      await driver.findElement(By.id('email')).sendKeys('dzeny.ahmic@gmail.com');
+      await driver.findElement(By.id('passwd')).sendKeys('12345');
+      await driver.findElement(By.id('SubmitLogin')).click();
+      await driver.sleep(500);
+      var link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[6]/ul/li[3]/a'));
+      link.click();
+      await driver.sleep(500);
+      var product = await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div[2]/ul/li/div/div[2]/h5/a'));
+      product.click();
+      await driver.sleep(500);
+      var link = await driver.findElement(By.id('add_to_cart'));
+      link.click();
+      await driver.sleep(500);
+      link = await driver.findElement(By.xpath('/html/body/div/div[1]/header/div[3]/div/div/div[3]/div/a'));
+      link.click();
+      await driver.sleep(5000);
+      var proceedBtn = await driver.findElement(By.className('button btn btn-default standard-checkout button-medium'));
+      proceedBtn.click(); 
+      await driver.sleep(5000);
+      var proceedBtn1 = await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div/form/p/button'));
+      proceedBtn1.click();
+      await driver.sleep(1000);
+      await driver.findElement(By.id('cgv')).click();
+      await driver.sleep(1000);
+      await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div/div/form/p/button')).click();
+      await driver.sleep(1000);
+      await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div/div/div[3]/div[2]/div/p/a')).click();
+      await driver.sleep(1000);
+      await driver.findElement(By.xpath('/html/body/div/div[2]/div/div[3]/div/form/p/button')).click();
+      await driver.sleep(1000);
+      var result = await driver.findElement(By.className('alert alert-success')).getText();
+      await driver.sleep(500);
+      expect(result).toEqual("Your order on My Store is complete.");
+      let text = await driver.findElement(By.className('ajax_cart_no_product')).getText();
+      expect(text).toEqual("(empty)");
+      await driver.sleep(500);  
+      });
+  });
+
+  afterAll(() => {
+    driver.quit();
+  });
 });
