@@ -21,7 +21,7 @@ describe('Smoke tests for Demo Application',() =>{
      driver.get(rootURL);
   })
   
-  /*describe('Tests - home page', () => {
+  describe('Tests - home page', () => {
     it('Check that cart is empty when new user launches the app', async () =>{
       await driver.sleep(1000);
       let text = await driver.findElement(By.className('ajax_cart_no_product')).getText();
@@ -151,10 +151,10 @@ describe('Smoke tests for Demo Application',() =>{
       await driver.close();
       await driver.switchTo().window(originalWindow);
     });
-  });*/
+  });
  
-//  describe('Tests- Authentication page', () => {
-    /*
+describe('Tests- Authentication page', () => {
+    
     it('Check sign up and sign out option', async  () =>{
       await driver.sleep(500);
       await driver.findElement(By.className('login')).click();
@@ -208,7 +208,7 @@ describe('Smoke tests for Demo Application',() =>{
       expect(result).toEqual("Your shopping cart is empty.");
       await driver.findElement(By.className('logout')).click();
     })
-  });*/
+  });
 
   describe('Tests- Ordering products', () => {
     it('Logged user is able to make successful order of items', async  () =>{
