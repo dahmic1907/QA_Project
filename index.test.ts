@@ -1,19 +1,21 @@
-jest.setTimeout(100000);
+require('selenium-webdriver/chrome');
+require('selenium-webdriver/firefox');
+require('chromedriver')
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { Driver } = require('selenium-webdriver/chrome');
 const { isAwaitExpression } = require('typescript');
-require('selenium-webdriver/chrome');
-require('selenium-webdriver/firefox');
-require('chromedriver');
 const rootURL = 'http://automationpractice.com/index.php';
 let driver = new Builder().forBrowser('chrome').build();
 
-  it('waits for the driver to start', () => {
+describe('Smoke tests for Demo Application',() =>{
+
+  it('Waits for the driver to start', () => {
     return driver.then((_d: any) => {
       driver = _d
     })
   })
-  it('initialises the context', () => {
+
+  it('Initialises the context', () => {
      driver.manage().window().setPosition(0, 0);
      driver.manage().window().maximize();
      driver.get(rootURL);
@@ -81,8 +83,8 @@ let driver = new Builder().forBrowser('chrome').build();
       await driver.sleep(500);
       let ContactUs = await driver.findElement(By.id('contact-link'));
       ContactUs.click();
-      let rezalt = await driver.findElement(By.className('navigation_page')).getText();
-      expect(rezalt).toEqual("Contact");
+      let result = await driver.findElement(By.className('navigation_page')).getText();
+      expect(result).toEqual("Contact");
       await driver.sleep(5000);  
     })
     it('Check Newsletter option', async  () =>{
@@ -150,7 +152,7 @@ let driver = new Builder().forBrowser('chrome').build();
       await driver.switchTo().window(originalWindow);
     });
 
-  });
+});
  
 describe('Tests- Authentication page', () => {
   
@@ -182,7 +184,7 @@ describe('Tests- Authentication page', () => {
   })
 
   it('Check sign in and add to cart options for registered user', async  () =>{
-    await driver.sleep(500);
+    await driver.sleep(1000);
     await driver.findElement(By.className('login')).click();
     await driver.findElement(By.id('email')).sendKeys('dzeny.ahmic@gmail.com');
     await driver.findElement(By.id('passwd')).sendKeys('12345');
@@ -211,4 +213,5 @@ describe('Tests- Authentication page', () => {
 });
 afterAll(() => {
   driver.quit();
+});
 });
