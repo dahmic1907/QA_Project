@@ -1,22 +1,27 @@
+import { WebDriver } from "selenium-webdriver";
+
 require('selenium-webdriver/chrome');
-const {By, Key, until } = require('selenium-webdriver');
+const { By, Key, until } = require('selenium-webdriver');
 export class SearchPage{
-    private driver;
-    private productUrl;
-    
-    constructor(driver){
+    protected driver: WebDriver;
+ 
+    constructor(driver: WebDriver){
         this.driver = driver;
     }
-//#region methods
+
+    //#region  Locators
+    private productUrl = By.className('product_img_link');
+    private paragraph = By.className('heading-counter');
+    //#endregion Locators
+
+    //#region Methods
     public async getParagraphText(){
-        return await this.driver.findElement(By.className('heading-counter')).getText();
+        return await this.driver.findElement(this.paragraph).getText();
     }
     public async clickOnProduct(){
         await this.driver.sleep(500);
-        this.productUrl  = await this.driver.findElement(By.className('product_img_link'));
-        await this.productUrl.click();
+        await this.driver.findElement(this.productUrl).click();
     }
-
-//#endregion
+    //#endregion Methods
 
 }

@@ -1,20 +1,22 @@
+import { WebDriver } from "selenium-webdriver";
+
 require('selenium-webdriver/chrome');
-const {By, Key, until } = require('selenium-webdriver');
+const { By, Key, until } = require('selenium-webdriver');
 export class WomenPage{
-    private driver;
-    private navigationText;
+    protected driver: WebDriver;
     
-    constructor(driver){
+    constructor(driver: WebDriver){
         this.driver = driver;
     }
 
-//#region methods
-    public async getNavigationText(){
-        
-        return this.navigationText = await this.driver.findElement(By.className('navigation_page')).getText();
-    }
-    
+    //#region  Locators
+    private navigationText = By.className('navigation_page');
+    //#endregion Locators
 
-//#endregion
+    //#region Methods
+    public async getNavigationText(){
+        return await this.driver.findElement(this.navigationText).getText();
+    }
+    //#endregion Methods
 
 }

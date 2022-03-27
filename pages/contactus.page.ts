@@ -1,19 +1,25 @@
+import { WebDriver } from "selenium-webdriver";
+
 require('selenium-webdriver/chrome');
-const {By, Key, until } = require('selenium-webdriver');
+const { By, Key, until } = require('selenium-webdriver');
 export class ContactUsPage{
-    private driver;
-    private navigationText;
+
+    protected driver: WebDriver;
     
-    constructor(driver){
+    constructor(driver: WebDriver){
         this.driver = driver;
     }
+    //#region Locators
+    private navigationText = By.className('navigation_page');
+    //#endregion Locators
 
-//#region methods
+
+    //#region Methods
     public async getNavigationText(){
         
-        return this.navigationText = await this.driver.findElement(By.className('navigation_page')).getText();
+        return this.navigationText = await this.driver.findElement(this.navigationText).getText();
     }
     
-//#endregion
+    //#endregion Methods
 
 }
