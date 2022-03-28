@@ -17,7 +17,7 @@ export class ContactUsPage{
     //#region Methods
     public async getNavigationText(){
         
-        return this.navigationText = await this.driver.findElement(this.navigationText).getText();
+        return await this.driver.findElement(this.navigationText).getText();
     }
     
     //#endregion Methods

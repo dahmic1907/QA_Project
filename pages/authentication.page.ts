@@ -40,7 +40,7 @@ export class AuthentiPage{
         await this.driver.sleep(500);
     }
 
-    public async submitSignUpData(firstName: string, lastName : string,passwd: string,address: string,city: string, state: string, postcode: string,phone: string){
+    public async submitSignUpData(firstName: string, lastName : string, passwd: string,address: string, city: string, state: string, postcode: string, phone: string){
         await this.driver.findElement(this.firstName).sendKeys(firstName);
         await this.driver.findElement(this.lastName).sendKeys(lastName);
         await this.driver.findElement(this.passwd).sendKeys(passwd);

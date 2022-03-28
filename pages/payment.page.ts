@@ -44,9 +44,6 @@ export class PaymentPage{
         await this.driver.sleep(500);
         return text;
     }
-
-    
-
-//#endregion
+    //#endregion Methods
 
 }

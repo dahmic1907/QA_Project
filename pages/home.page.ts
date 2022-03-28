@@ -37,9 +37,9 @@ export class HomePage{
         await this.driver.findElement(this.cartLink).click();
     }
 
-    public async useSearcBox(input: string){
+    public async useSearcBox(searchedItem: string){
         this.searchBox = await this.driver.findElement(this.searchBox);
-        await this.searchBox.sendKeys(input);
+        await this.searchBox.sendKeys(searchedItem);
         await this.driver.findElement(this.searchButton).click();
         await this.driver.sleep(500);
     }
@@ -64,9 +64,9 @@ export class HomePage{
         await this.driver.findElement(this.contactUsBtn).click();
     }
 
-    public async subscribeToNewsletter(input: string){
+    public async subscribeToNewsletter(email: string){
         await this.driver.findElement(this.homeIcon).click();
-        await this.driver.findElement(this.newsletterFld).sendKeys(input,  Key.ENTER);
+        await this.driver.findElement(this.newsletterFld).sendKeys(email,  Key.ENTER);
         return await this.driver.findElement(this.alertMessage).getText();
     }
 

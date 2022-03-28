@@ -16,7 +16,7 @@ export class UserAccountPage{
 
     //#region Methods
     public async getNavigationText(){
-        await this.driver.findElement(this.navigationText).getText();
+        return await this.driver.findElement(this.navigationText).getText();
     }
 
     public async clickOnSignOutBtn(){
