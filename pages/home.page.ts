@@ -24,7 +24,8 @@ export class HomePage{
     facebookIcon = By.className('facebook');
     twitterIcon = By.className('twitter');
     youtubeIcon = By.className('youtube');
-    alertMessage = By.className('alert alert-success');
+    alertMessageSuccess = By.className('alert alert-success');
+    alertMessageDanger = By.className('alert alert-danger');
 
     //#endregion Locators
     

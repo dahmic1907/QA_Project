@@ -17,21 +17,9 @@ describe('Smoke tests for Demo Application', () => {
 
   describe('Tests - home page', () => {
 
-    it('Check that cart is empty when new user launches the app', async () => {
-
-      await browser.goToPage(rootURL);
-      await browser.driver.sleep(2000);
-      var text = await browser.getText(pageLocators.getHomePage().cartText);
-      expect(text).toEqual("(empty)");
-      await browser.click(pageLocators.getHomePage().cartLink);
-      await browser.driver.sleep(1000);
-      expect(await browser.getText(pageLocators.getCartPage().navigatonText)).toEqual("Your shopping cart is empty.");
-      await browser.driver.sleep(500);
-
-    });
-
     it('Check Search option by inserting Blouse item', async () => {
 
+      await browser.goToPage(rootURL);
       await browser.driver.sleep(5000);
       await browser.enterDataAndClick(pageLocators.getHomePage().searchBox, "Blouse", pageLocators.getHomePage().searchButton);
       await browser.driver.sleep(500);
@@ -85,7 +73,7 @@ describe('Smoke tests for Demo Application', () => {
       await browser.click(pageLocators.getHomePage().homeIcon);
       await browser.enterDataAndClick(pageLocators.getHomePage().newsletterFld, "dtzena.ahm@gmail.coo", pageLocators.getHomePage().submitNewsletterBtn);
       await browser.driver.sleep(500);
-      expect(await browser.getText(pageLocators.getHomePage().alertMessage)).toEqual('Newsletter : You have successfully subscribed to this newsletter.');
+      expect(await browser.getText(pageLocators.getHomePage().alertMessageSuccess)).toEqual('Newsletter : You have successfully subscribed to this newsletter.');
       await browser.driver.sleep(500);
 
     });

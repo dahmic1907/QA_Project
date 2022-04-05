@@ -12,6 +12,7 @@ export class SearchPage{
     productUrl = By.className('product_img_link');
     paragraph = By.className('heading-counter');
     productTitle = By.css('h1');
+    searchMessage = By.xpath('//*[@id="center_column"]/p'); 
 
     //#endregion Locators
 

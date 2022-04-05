@@ -11,6 +11,8 @@ export class CartPage{
 
     navigatonText = By.className('alert alert-warning');
     checkOutBtn = By.xpath('//*[@id="center_column"]/p[2]/a[1]');
+    iconTrash = By.className('icon-trash');
+
 
     //#endregion Locators
 

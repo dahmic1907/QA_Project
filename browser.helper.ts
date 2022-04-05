@@ -32,8 +32,15 @@ export class BrowserHelper {
 
     }
 
+    async sendKeys(elementLocator: any, inputData: string) {
+
+        await this.driver.findElement(elementLocator).sendKeys(inputData);
+
+    }
+
     async enterDataAndClick(inputFieldLocator: any, inputData: string, submitLocator: any) {
-        
+
+        await this.driver.findElement(inputFieldLocator).clear();
         await this.driver.findElement(inputFieldLocator).sendKeys(inputData);
         await this.driver.sleep(500);
         await this.driver.findElement(submitLocator).click();
@@ -62,7 +69,9 @@ export class BrowserHelper {
     public async loginToPage(email: string, passwd: string) {
 
         const authenticationPage = new AuthenticationPage();
+        await this.driver.findElement(authenticationPage.loginEmail).clear();
         await this.driver.findElement(authenticationPage.loginEmail).sendKeys(email);
+        await this.driver.findElement(authenticationPage.passwd).clear();
         await this.driver.findElement(authenticationPage.passwd).sendKeys(passwd);
         await this.driver.findElement(authenticationPage.submitLoginBtn).click();
         await this.driver.sleep(1000);

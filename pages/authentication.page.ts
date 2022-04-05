@@ -23,7 +23,9 @@ export class AuthenticationPage{
     state = By.id('id_state'); 
     postcode = By.id('postcode');
     phone = By.id('phone_mobile');
-     
+    LoginerrorMessage = By.xpath('//*[@id="center_column"]/div[1]/ol/li');
+    signupErrorMessage = By.xpath('//*[@id="create_account_error"]/ol/li');
+
     //#endregion Locators
 
 }
